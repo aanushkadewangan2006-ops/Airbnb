@@ -6,12 +6,17 @@
     <title>Wanderlust</title>
 </head>
 <body>
+
     <h2>All Listing</h2>
 
-    <% for(listing of allListing){%>
+    <form action="/listings/new">
+        <button>Create New List</button>
+    </form>
+
+    <% for(listing of allListings){%>
 
         <ul>
-            <li><a href="#"><%= listing.title %></a></li>
+            <li><a href="/listings/<%= listing._id%> "><%= listing.title %></a></li>
         </ul>
     
     <%}%>

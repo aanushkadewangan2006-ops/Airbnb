@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const listing = require("./model/listing");
+const Listing = require("./model/listing");
 const path = require("path");
+const methodOverride = require("method-override")
 
 main()
   .then((res) => {
@@ -18,14 +19,58 @@ async function main() {
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"))
 
 app.get("/", (req, res) => {
   res.send("hi i am root");
 });
 
-app.get("/listing", async (req, res) => {
-  const allListing = await listing.find({});
-  res.render("./listing/index.ejs", { allListing });
+//Index Route
+app.get("/listings", async (req, res) => {
+  const allListings = await Listing.find({ title: { $ne: "" } });
+  res.render("./listing/index.ejs", { allListings });
+});
+
+//New Route
+app.get("/listings/new", (req, res) => {
+  res.render("./listing/new.ejs");
+});
+
+//Show Route
+app.get("/listings/:id", async (req, res) => {
+  let { id } = req.params;
+  let listing = await Listing.findById(id);
+  res.render("./listing/show.ejs", { listing });
+});
+
+//Create Route
+app.post("/listings", async (req, res) => {
+  let listing = new Listing(req.body);
+  await listing.save();
+  res.redirect("/listings");
+});
+
+//Edit Route
+app.get("/listings/:id/edit", async (req, res) => {
+  let { id } = req.params;
+  let listing = await Listing.findById(id);
+  res.render("./listing/edit.ejs", { listing });
+});
+
+// Update Route
+app.put("/listings/:id", async (req, res) => {
+  let { id } = req.params;
+  await Listing.findByIdAndUpdate(id,{...req.body.listing});
+  res.redirect(`/listings/${id}`);
+});
+
+// Delete Route
+app.delete("/listings/:id", async (req, res) => {
+  let { id } = req.params;
+  let deleteListing = await Listing.findByIdAndDelete(id);
+  console.log(deleteListing);
+  res.redirect("/listings");
 });
 
 // app.get("/listing", async (req, res) => {
