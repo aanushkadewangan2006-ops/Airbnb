@@ -1,5 +1,12 @@
-body{
-    font-family: "Plus jakarta Sans",sans-serif;
+body {
+  font-family: "Plus jakarta Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
 }
 
 /* NAVBAR */
@@ -70,17 +77,47 @@ body{
   padding: 0 !important;
 }
 
-.listing-link{
-    text-decoration: none;
+.listing-link {
+  text-decoration: none;
 }
 
 /* CARD-EFFECT */
 
-.card-img-overlay{
-    opacity: 0;
+.card-img-overlay {
+  opacity: 0;
 }
 
-.card-img-overlay:hover{
-    opacity: 0.2;
-    background-color: white;
+.card-img-overlay:hover {
+  opacity: 0.2;
+  background-color: white;
+}
+
+/* NEW PAGE  */
+
+.add-btn {
+  background-color: #fe424d !important;
+  border: none !important;
+}
+
+/* EDIT PAGE */
+
+.edit-btn {
+  background-color: #fe424d !important;
+  border: none !important;
+}
+
+/* SHOW PAGE */
+
+.show-img{
+    height: 30vh;
+}
+
+.btns{
+    display: flex;
+
+}
+
+.show-card{
+    padding-left:0 ;
+    padding-right: 0;
 }
