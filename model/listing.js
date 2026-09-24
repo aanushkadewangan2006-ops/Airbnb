@@ -10,10 +10,10 @@ let listingSchema = new Schema({
   image: {
     type: String,
     default:
-      "https://unsplash.com/photos/person-in-silhouette-overlooking-sea-HC8e7cOY-90",
+      "https://plus.unsplash.com/premium_photo-1688327330136-68347eed090f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     set: (v) =>
       v === ""
-        ? "https://unsplash.com/photos/person-in-silhouette-overlooking-sea-HC8e7cOY-90"
+        ? "https://plus.unsplash.com/premium_photo-1688327330136-68347eed090f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         : v,
   },
   price: Number,

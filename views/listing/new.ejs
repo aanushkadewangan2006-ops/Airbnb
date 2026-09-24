@@ -3,7 +3,7 @@
   <div class="col-8 offset-2">
     <h2>Create New List</h2>
 
-    <form method="POST" action="/listings">
+    <form method="POST" action="/listings" novalidate class="needs-validation">
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
@@ -11,12 +11,15 @@
           name="title"
           placeholder="Add a catchy title"
           class="form-control"
+          required
         />
+        <div class="valid-feedback">Looks good!</div>
       </div>
 
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <textarea name="desc" class="form-control"></textarea>
+        <textarea name="desc" class="form-control" required></textarea>
+        <div class="invalid-feedback">Description should be short</div>
       </div>
 
       <div class="mb-3">
@@ -27,6 +30,7 @@
           placeholder="enter Image URL/Link"
           class="form-control"
         />
+        <div class="invalid-feedback"> Image link should be valid</div>
       </div>
 
       <div class="row">
@@ -37,7 +41,9 @@
             name="price"
             placeholder="1200"
             class="form-control"
+            required
           />
+          <div class="invalid-feedback">Price should be valid </div>
         </div>
 
         <div class="mb-3 col-md-8">
@@ -47,8 +53,10 @@
             name="country"
             placeholder="India"
             class="form-control"
+            required
           />
         </div>
+        <div class="invalid-feedback">Country should be valid </div>
       </div>
 
       <div class="mb-3">
@@ -58,10 +66,12 @@
           name="location"
           placeholder="Jaipur, Rajisthan"
           class="form-control"
+          required
         />
+        <div class="invalid-feedback">Location should be valid </div>
       </div>
 
-      <button class="btn btn-dark add-btn">Add</button>
+      <button type="submit" class="btn btn-dark add-btn">Add</button>
     </form>
     <br /><br />
   </div>
